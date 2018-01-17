@@ -1,11 +1,13 @@
 # Basic Reason Template
 
-Hello! This project allows you to quickly get started with Reason and BuckleScript. If you wanted a more sophisticated version, try the `react` template (`bsb -theme react -init .`).
+Hello! This project is written in Reason. However, it compiles down to JS. All the relevant code is 
+in src and __tests__ directory. In order to get started do ```npm install``` or ```yarn``` inside of the project.
 
 # Build
 ```
 npm run build
 ```
+
 
 # Build + Watch
 
@@ -13,6 +15,9 @@ npm run build
 npm run watch
 ```
 
+# Tests
+after building ``` run yarn ``` jest or ``` npm jest ```
 
-# Editor
-If you use `vscode`, Press `Windows + Shift + B` it will build automatically
+# Repl
+you can test it yourself, in Reason Repl (https://reasonml.github.io/docs/en/extra-goodies.html).
+

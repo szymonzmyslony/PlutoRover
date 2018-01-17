@@ -7,11 +7,11 @@ type move = F | B | R | L | NotValid ;
 type square = Empty | Obstacle;
 
 type position = (int, int);
+type status = Ok| Obstacle;
 
 type board = list (list square);
 
-type pluto = {board, position, direction};
-
+type pluto = {board, position, direction, status};
 let mapCharToMove c => switch c {
     | 'F' => F
     | 'B' => B
@@ -54,6 +54,13 @@ let evaluateMove pluto m => {
         | (West, F) => (x, (y-1 + width) mod width  )
         | (_, _) => (x, y)
     };
+    let boardRow = List.nth board x;
+    let square = List.nth boardRow y;
+    let (status, newPosition) = 
+    switch square {
+        | Empty => (Ok, newPosition)
+        | Obstacle => (Obstacle, position)
+    };
     let newDirection = switch (direction, m) {
         | (North, R) 
         | (South, L) => East
@@ -66,7 +73,7 @@ let evaluateMove pluto m => {
         | (_, _) => direction
     };
 
-    let newPluto = {...pluto, position: newPosition, direction: newDirection};
+    let newPluto = {...pluto, position: newPosition, direction: newDirection, status};
     newPluto
  };
 
@@ -95,4 +102,4 @@ let createOneObstacleInRowBoard heigth width obstacle => {
 };
 
 let createPluto startPosition startDirection board => 
-{board, position:startPosition, direction:startDirection};
+{board, position:startPosition, direction:startDirection, status: Ok};

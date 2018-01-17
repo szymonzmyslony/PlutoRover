@@ -2,15 +2,15 @@ open PlutoRover;
 open Jest;
 open Expect;
 
-let board:board = createOneObstacleInRowBoard 100 100 5;
-let plutoOne = createPluto (0, 5) North board;
-let movesBasic = "FFFFF";
+let board:board = createOneObstacleInRowBoard 10 10 5;
+let plutoOne = createPluto (0, 0) East board;
+let movesBasic = "FFFFFFFFFFFFFFFFF";
 
-let plutoMoved = createPluto (4, 5) North board;
+let plutoMoved = createPluto (0, 5) East board;
 
 
 describe
-  "basic pluto tests"
+  "basic obstacle pluto tests"
   (
     fun _ => {
         test
@@ -18,11 +18,8 @@ describe
         (
           fun _ =>
             expect (evaluateMoves movesBasic plutoOne) |>
-            toEqual plutoMoved
+            toEqual {...plutoMoved, status: Obstacle}
         );
-
- 
- 
     }
   );
 
