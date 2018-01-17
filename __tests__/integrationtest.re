@@ -7,10 +7,10 @@ let plutoOne = createPluto (0, 0) North board;
 let plutoOneRotated = createPluto (0, 0) South board;
 
 let plutoOutOfBoard = createPluto (1, 99) West board;
-let movesBasic = "F, F, F, F, R, R, F, F, F, F";
-let movesComplicated= "F, L, F";
+let movesBasic = "FFFFRRFFFF";
+let movesComplicated= "FLF";
 
-let movesFromExample= "F, F, R, F, F";
+let movesFromExample= "FFRFF";
 
 let plutoFromExample = createPluto (2, 2) East board;
 

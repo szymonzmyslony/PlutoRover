@@ -4,7 +4,7 @@ type direction = North | South | East | West;
 
 type move = F | B | R | L | NotValid ;
 
-type square = Empty;
+type square = Empty | Obstacle;
 
 type position = (int, int);
 
@@ -80,6 +80,15 @@ let evaluateMoves moves pluto => {
 /* those are utility functions for testing and playing with API */
 let createEmptyBoard heigth width => {
     let row = Array.make width Empty;
+    let listRow = Array.to_list row;
+    let board = Array.make heigth listRow;
+    Array.to_list board
+};
+
+
+let createOneObstacleInRowBoard heigth width obstacle => {
+    let row = Array.make width Empty;
+    Array.set row obstacle Obstacle;
     let listRow = Array.to_list row;
     let board = Array.make heigth listRow;
     Array.to_list board

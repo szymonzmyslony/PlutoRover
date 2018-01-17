@@ -5,8 +5,8 @@ open Expect;
 let board = createEmptyBoard 100 100;
 let plutoOne = createPluto (0, 0) North board;
 let plutoRotated = createPluto (0, 0) South board;
-let movesBasic = "R, R";
-let moveReturn= "R,L,R,L";
+let movesBasic = "RR";
+let moveReturn= "RLRL";
 
 describe
   "basic rotation pluto tests"
