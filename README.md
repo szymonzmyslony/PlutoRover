@@ -16,7 +16,7 @@ npm run watch
 ```
 
 # Tests
-after building ``` run yarn ``` jest or ``` npm jest ```
+after building do ``` yarn jest ``` jest or ``` npm jest ```
 
 # Repl
 you can test it yourself, in Reason Repl (https://reasonml.github.io/docs/en/extra-goodies.html).
