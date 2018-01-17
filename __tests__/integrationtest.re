@@ -14,7 +14,8 @@ let movesFromExample= "F, F, R, F, F";
 
 let plutoFromExample = createPluto (2, 2) East board;
 
-let movesHundred = String.make 100 'F';
+let hundredF = String.make 100 'F';
+let movesHundred =  hundredF;
 
 describe
   "combine rotation plus moving pluto tests"
@@ -40,7 +41,8 @@ describe
           fun _ =>
           expect (evaluateMoves movesHundred plutoOne) |>
           toEqual plutoOne
-        );
+        ); 
+      
         test
         "it behaves as described in the example"
         (
@@ -48,7 +50,10 @@ describe
           expect (evaluateMoves movesFromExample plutoOne) |>
           toEqual plutoFromExample
         );
+      
  
     }
   );
 
+
+  

@@ -40,16 +40,18 @@ let rec mapCommandToMove (command:string) => {
 /* core functionality of program */
 let evaluateMove pluto m => {
     let {board, position, direction} = pluto;
+    let heigth = List.length board;
+    let width = List.length (List.nth board 0);
     let (x, y) = position;
     let newPosition = switch (direction, m) {
         | (North, F)
-        | (South, B) => (x+1, y) 
+        | (South, B) => ( (x+1) mod heigth, y)  
         | (North, B) 
-        | (South, F) => (x-1, y)
+        | (South, F) => (x-1 + heigth mod heigth, y)
         | (East, F) 
-        | (West, B) => (x, y+1)
+        | (West, B) => (x, y+1 mod width )
         | (East, B)
-        | (West, F) => (x, y-1)
+        | (West, F) => (x, (y-1 + width) mod width  )
         | (_, _) => (x, y)
     };
     let newDirection = switch (direction, m) {
