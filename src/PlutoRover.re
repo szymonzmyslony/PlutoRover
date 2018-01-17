@@ -15,6 +15,8 @@ type pluto = {board, position, direction};
 let mapCharToMove c => switch c {
     | 'F' => F
     | 'B' => B
+    | 'L' => L
+    | 'R' => R
     | _ => NotValid
 };
 
@@ -50,7 +52,19 @@ let evaluateMove pluto m => {
         | (West, F) => (x, y-1)
         | (_, _) => (x, y)
     };
-    let newPluto = {...pluto, position: newPosition};
+    let newDirection = switch (direction, m) {
+        | (North, R) 
+        | (South, L) => East
+        | (North, L)
+        | (South, R) => West
+        | (West, L)
+        | (East, R) => South
+        | (West, R)
+        | (East, L) => North
+        | (_, _) => direction
+    };
+
+    let newPluto = {...pluto, position: newPosition, direction: newDirection};
     newPluto
  };
 

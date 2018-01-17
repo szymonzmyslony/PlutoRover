@@ -4,8 +4,9 @@ open Expect;
 
 let board = createEmptyBoard 100 100;
 let plutoOne = createPluto (0, 0) North board;
+let plutoOneRotated = createPluto (0, 0) South board;
 
-let plutoOutOfBoard = createPluto (1, -1) South board;
+let plutoOutOfBoard = createPluto (1, -1) West board;
 let movesBasic = "F, F, F, F, R, R, F, F, F, F";
 let movesComplicated= "F, L, F";
 
@@ -18,7 +19,7 @@ describe
         (
           fun _ =>
           expect (evaluateMoves movesBasic plutoOne) |>
-          toEqual plutoOne
+          toEqual plutoOneRotated
         );
         test
         "it goes off the board if start at origin and then goes straight and turns left"
