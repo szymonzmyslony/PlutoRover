@@ -1,21 +1,28 @@
 open PlutoRover;
+
 open Jest;
+
 open Expect;
 
 let board = createEmptyBoard 100 100;
+
 let plutoOne = createPluto (0, 0) North board;
+
 let plutoOneRotated = createPluto (0, 0) South board;
 
 let plutoOutOfBoard = createPluto (1, 99) West board;
-let movesBasic = "FFFFRRFFFF";
-let movesComplicated= "FLF";
 
-let movesFromExample= "FFRFF";
+let movesBasic = "FFFFRRFFFF";
+
+let movesComplicated = "FLF";
+
+let movesFromExample = "FFRFF";
 
 let plutoFromExample = createPluto (2, 2) East board;
 
 let hundredF = String.make 100 'F';
-let movesHundred =  hundredF;
+
+let movesHundred = hundredF;
 
 describe
   "combine rotation plus moving pluto tests"
@@ -23,37 +30,15 @@ describe
     fun _ => {
       test
         "it correctly moves, rotates 180 degrees and goes back to the same place"
-        (
-          fun _ =>
-          expect (evaluateMoves movesBasic plutoOne) |>
-          toEqual plutoOneRotated
-        );
-        test
+        (fun _ => expect (evaluateMoves movesBasic plutoOne) |> toEqual plutoOneRotated);
+      test
         "it doesn't go off the board if start at origin and then goes straight and turns left"
-        (
-          fun _ =>
-          expect (evaluateMoves movesComplicated plutoOne) |>
-          toEqual plutoOutOfBoard
-        );
-        test
+        (fun _ => expect (evaluateMoves movesComplicated plutoOne) |> toEqual plutoOutOfBoard);
+      test
         "it goes to the same place if moves 100 times forward"
-        (
-          fun _ =>
-          expect (evaluateMoves movesHundred plutoOne) |>
-          toEqual plutoOne
-        ); 
-      
-        test
+        (fun _ => expect (evaluateMoves movesHundred plutoOne) |> toEqual plutoOne);
+      test
         "it behaves as described in the example"
-        (
-          fun _ =>
-          expect (evaluateMoves movesFromExample plutoOne) |>
-          toEqual plutoFromExample
-        );
-      
- 
+        (fun _ => expect (evaluateMoves movesFromExample plutoOne) |> toEqual plutoFromExample)
     }
   );
-
-
-  
