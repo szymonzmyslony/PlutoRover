@@ -5,7 +5,6 @@ open Expect;
 let board = createEmptyBoard 100 100;
 let plutoOne = createPluto (0, 0) North board;
 let plutoOneMoved = createPluto (4, 0) North board;
-let plutoTwo = createPluto (10, 10) South board;
 let movesBasic = "F,F,F,F";
 let moveReturn= "F,B,F,B";
 
